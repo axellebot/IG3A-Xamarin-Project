@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace XamarinApp
+namespace XamarinApp.Views
 {
-	public partial class MainPage : ContentPage
-	{
-		public MainPage()
+	public partial class FirstPage : ContentPage
+    {
+		public FirstPage()
 		{
 			InitializeComponent();
 		}

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="XamarinApp.Views.TodoItemEditPage"
+		     Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Order="Primary" Clicked="Cancel_Clicked"/>
+        <ToolbarItem Text="Save" Order="Primary" Clicked="Save_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Text" FontSize="Medium" />
+            <Entry Text="{Binding TodoItem.Text}" FontSize="Small" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

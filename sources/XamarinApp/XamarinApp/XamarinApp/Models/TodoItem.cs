@@ -1,20 +1,39 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.ComponentModel;
 
 namespace XamarinApp.Models
 {
-    public class TodoItem : IEquatable<TodoItem>, INotifyPropertyChanged , IComparable<TodoItem>
+    public class TodoItem : IEquatable<TodoItem>, INotifyPropertyChanged, IComparable<TodoItem>
     {
-        string text;
-        bool done;
+        private string _id;
+        private string _text;
+        private bool _done;
 
-        public string Id { get; set; }
+        [PrimaryKey]
+        public string Id {
+            set
+            {
+                if (_id != value)
+                {
+                    _id = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("Id"));
+                    }
+                }
+            }
+            get
+            {
+                return _id;
+            }
+        }
         public string Text {
             set
             {
-                if (text != value)
+                if (_text != value)
                 {
-                    text = value;
+                    _text = value;
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("Text"));
@@ -22,15 +41,15 @@ namespace XamarinApp.Models
                 }
             }
             get {
-                return text;
+                return _text;
             }
         }
         public bool Done {
             set
             {
-                if (done != value)
+                if (_done != value)
                 {
-                    done = value;
+                    _done = value;
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("Done"));
@@ -39,7 +58,7 @@ namespace XamarinApp.Models
             }
             get
             {
-                return done;
+                return _done;
             }
         }
 

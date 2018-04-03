@@ -4,7 +4,9 @@
 ### Flutter
 ### Xamarin
 
-## Pattern
+## Patterns
+### Factory
+### DataBinding
+### Injection de dépendance
 ### MVC
 ### MVVM
-#### DataBinding

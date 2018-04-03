@@ -4,9 +4,9 @@
              xmlns:views="clr-namespace:XamarinApp.Views"
              x:Class="XamarinApp.Views.MainPage">
     <TabbedPage.Children>
-        <NavigationPage Title="Part 1">
+        <NavigationPage Title="Tasks">
             <x:Arguments>
-                <views:FirstPage />
+                <views:TodoItemsPage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="Part 2">

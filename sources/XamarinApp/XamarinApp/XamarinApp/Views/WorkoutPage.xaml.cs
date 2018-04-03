@@ -7,14 +7,20 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using XamarinApp.ViewModels;
+
 namespace XamarinApp.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ThirdPage : ContentPage
+	public partial class WorkoutPage : ContentPage
 	{
-		public ThirdPage()
+        WorkoutViewModel viewModel;
+
+        public WorkoutPage()
 		{
-			InitializeComponent ();
+            InitializeComponent();
+
+            BindingContext = viewModel= new WorkoutViewModel();
 		}
 	}
 }

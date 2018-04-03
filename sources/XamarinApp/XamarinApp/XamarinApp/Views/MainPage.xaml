@@ -14,9 +14,9 @@
                 <views:SecondPage />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Part 3">
+        <NavigationPage Title="Workout">
             <x:Arguments>
-                <views:ThirdPage />
+                <views:WorkoutPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>

@@ -11,7 +11,7 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TodoItemsPage.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ThirdPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\WorkoutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\TodoItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockTodoDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\WorkoutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoBaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoItemEditViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoItemDetailViewModel.cs" />
@@ -38,9 +39,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\TodoItemsPage.xaml.cs">
       <DependentUpon>TodoItemsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ThirdPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\WorkoutPage.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>ThirdPage.xaml</DependentUpon>
+      <DependentUpon>WorkoutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\SecondPage.xaml.cs">
       <DependentUpon>SecondPage.xaml</DependentUpon>

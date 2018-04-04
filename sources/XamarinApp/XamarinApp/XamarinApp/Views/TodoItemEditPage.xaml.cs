@@ -32,6 +32,7 @@ namespace XamarinApp.Views
 
             var todoItem = new TodoItem
             {
+                Id = Guid.NewGuid().ToString(),
                 Text = "Task 1",
                 Done = false
             };

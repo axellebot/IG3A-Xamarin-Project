@@ -5,14 +5,13 @@ using System.Threading.Tasks;
 
 using XamarinApp.Models;
 
-[assembly: Xamarin.Forms.Dependency(typeof(XamarinApp.Services.MockTodoDataStore))]
 namespace XamarinApp.Services
 {
-    public class MockTodoDataStore : IDataStore<TodoItem>
+    public class TodoCacheDataStore : IDataStore<TodoItem>
     {
         List<TodoItem> items;
 
-        public MockTodoDataStore()
+        public TodoCacheDataStore()
         {
             items = new List<TodoItem>();
             var mockItems = new List<TodoItem>
@@ -31,28 +30,28 @@ namespace XamarinApp.Services
             }
         }
 
-        public async Task<bool> AddItemAsync(TodoItem item)
+        public async Task<int> AddItemAsync(TodoItem item)
         {
             items.Add(item);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(1);
         }
 
-        public async Task<bool> UpdateItemAsync(TodoItem todoItem)
+        public async Task<int> UpdateItemAsync(TodoItem todoItem)
         {
             var _todoItem = items.Where((TodoItem arg) => arg.Id == todoItem.Id).FirstOrDefault();
             items.Remove(_todoItem);
             items.Add(todoItem);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(1);
         }
 
-        public async Task<bool> DeleteItemAsync(TodoItem todoItem)
+        public async Task<int> DeleteItemAsync(TodoItem todoItem)
         {
             var _todoItem = items.Where((TodoItem arg) => arg.Id == todoItem.Id).FirstOrDefault();
             items.Remove(_todoItem);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(1);
         }
 
         public async Task<TodoItem> GetItemAsync(string id)
@@ -60,7 +59,7 @@ namespace XamarinApp.Services
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<TodoItem>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<List<TodoItem>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
         }

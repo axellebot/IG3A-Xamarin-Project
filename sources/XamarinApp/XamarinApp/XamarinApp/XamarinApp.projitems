@@ -21,8 +21,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\TodoItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\MockTodoDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IFileHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TodoDiskDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TodoDataStoreFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TodoCacheDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\WorkoutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoBaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoItemEditViewModel.cs" />

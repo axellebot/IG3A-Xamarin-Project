@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -10,29 +11,33 @@ using XamarinApp.Views;
 
 namespace XamarinApp.ViewModels
 {
-    public class TodoItemsViewModel : TodoBaseViewModel
+    public class TodoListViewModel : TodoBaseViewModel
     {
-        public ObservableCollection<TodoItem> Items { get; set; }
+        public ObservableCollection<TodoItemModel> Items { get; set; }
+
         public Command LoadItemsCommand { get; set; }
 
-        public TodoItemsViewModel()
+        public TodoListViewModel()
         {
             Title = "Todo List";
-            Items = new ObservableCollection<TodoItem>();
+            Items = new ObservableCollection<TodoItemModel>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<TodoItemEditPage, TodoItem>(this, "CreateTodoItem", async (obj, item) =>
+            MessagingCenter.Subscribe<TodoItemEditPage, TodoItemModel>(this, "UpdateTodoItem",  (obj, item) =>
             {
-                var _item = item as TodoItem;
-                Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
+                LoadItemsCommand.Execute(null);
             });
 
-            MessagingCenter.Subscribe<TodoItemDetailPage, TodoItem>(this, "DeleteTodoItem", async (obj, item) =>
+            MessagingCenter.Subscribe<TodoItemEditPage, TodoItemModel>(this, "CreateTodoItem",  (obj, item) =>
             {
-                var _item = item as TodoItem;
+                var _item = item as TodoItemModel;
+                Items.Add(_item);
+            });
+
+            MessagingCenter.Subscribe<TodoItemEditPage, TodoItemModel>(this, "DeleteTodoItem",  (obj, item) =>
+            {
+                var _item = item as TodoItemModel;
                 Items.Remove(_item);
-                await DataStore.DeleteItemAsync(_item);
             });
         }
 

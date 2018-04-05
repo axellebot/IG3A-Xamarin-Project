@@ -6,17 +6,12 @@
     <TabbedPage.Children>
         <NavigationPage Title="Tasks">
             <x:Arguments>
-                <views:TodoItemsPage />
+                <views:TodoListPage />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Part 2">
+        <NavigationPage Title="Stop Watch">
             <x:Arguments>
-                <views:SecondPage />
-            </x:Arguments>
-        </NavigationPage>
-        <NavigationPage Title="Workout">
-            <x:Arguments>
-                <views:WorkoutPage />
+                <views:StopWatchPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>

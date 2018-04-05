@@ -11,33 +11,21 @@ namespace XamarinApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TodoItemEditPage : ContentPage
     {
-        TodoItemEditViewModel viewModel;
-        bool newItem = false;
+        TodoItemViewModel viewModel;
 
-        public TodoItemEditPage(TodoItemEditViewModel viewModel)
+        public TodoItemEditPage(TodoItemViewModel viewModel)
         {
             InitializeComponent();
 
-            newItem = false;
             viewModel.Title = "Edit Task";
             BindingContext = this.viewModel = viewModel;
         }
 
         public TodoItemEditPage()
         {
-              
             InitializeComponent();
 
-            newItem = true;
-
-            var todoItem = new TodoItem
-            {
-                Id = Guid.NewGuid().ToString(),
-                Text = "Task 1",
-                Done = false
-            };
-
-            viewModel = new TodoItemEditViewModel(todoItem);
+            viewModel = new TodoItemViewModel();
 
             viewModel.Title = "New Task";
             BindingContext = viewModel;
@@ -45,20 +33,42 @@ namespace XamarinApp.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            if (newItem)
+            viewModel.SaveItemCommand.Execute(null);
+
+            if (viewModel.IsDeletable)
             {
-                MessagingCenter.Send(this, "CreateTodoItem", viewModel.TodoItem);
+                MessagingCenter.Send(this, "UpdateTodoItem", viewModel.TodoItemModel);
+                await Navigation.PopAsync();
             }
             else
             {
-                MessagingCenter.Send(this, "UpdateTodoItem", viewModel.TodoItem);
+                MessagingCenter.Send(this, "CreateTodoItem", viewModel.TodoItemModel);
+                await Navigation.PopModalAsync();
             }
-            await Navigation.PopModalAsync();
         }
-
+        async void Delete_Clicked(object sender, EventArgs e)
+        {
+            MessagingCenter.Send(this, "DeleteTodoItem", viewModel.TodoItemModel);
+            if (viewModel.IsDeletable)
+            {
+                await Navigation.PopAsync();
+            }
+            else
+            {
+                await Navigation.PopModalAsync();
+            }
+            viewModel.DeleteItemCommand.Execute(null);
+        }
         async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            if (viewModel.IsDeletable)
+            {
+                await Navigation.PopAsync();
+            }
+            else
+            {
+                await Navigation.PopModalAsync();
+            }
         }
     }
 }

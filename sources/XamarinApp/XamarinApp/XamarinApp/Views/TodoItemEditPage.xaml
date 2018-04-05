@@ -2,15 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="XamarinApp.Views.TodoItemEditPage"
+             xmlns:messier16="clr-namespace:Messier16.Forms.Controls;assembly=Messier16.Forms.Controls"
 		     Title="{Binding Title}">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Order="Primary" Clicked="Delete_Clicked"/>
         <ToolbarItem Text="Cancel" Order="Primary" Clicked="Cancel_Clicked"/>
         <ToolbarItem Text="Save" Order="Primary" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="Text" FontSize="Medium" />
-            <Entry Text="{Binding TodoItem.Text}" FontSize="Small" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <StackLayout Orientation="Horizontal">
+                    <messier16:Checkbox Checked="{Binding TodoItemModel.Done}" WidthRequest="45"></messier16:Checkbox>
+                    <Entry Placeholder="Name"  HorizontalOptions="FillAndExpand" Text="{Binding TodoItemModel.Name}" FontSize="Small" />
+                </StackLayout>
+                <Label Text="Notes" FontSize="Small" />
+                <Editor Text="{Binding TodoItemModel.Notes}" FontSize="Small" VerticalOptions="FillAndExpand"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

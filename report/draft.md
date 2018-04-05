@@ -4,7 +4,7 @@
 ### Flutter
 ### Xamarin
 
-## Patterns
+## Architectural Patterns
 ### Factory
 ### DataBinding
 ### Injection de dépendance

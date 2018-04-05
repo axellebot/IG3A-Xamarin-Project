@@ -1,35 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 using XamarinApp.Models;
-using XamarinApp.Views;
 using XamarinApp.ViewModels;
 
 namespace XamarinApp.Views
 {
-	public partial class TodoItemsPage : ContentPage
+	public partial class TodoListPage : ContentPage
     {
-        TodoItemsViewModel viewModel;
+        TodoListViewModel viewModel;
 
-        public TodoItemsPage()
+        public TodoListPage()
 		{
 			InitializeComponent();
 
-            BindingContext = viewModel = new TodoItemsViewModel();
+            BindingContext = viewModel = new TodoListViewModel();
         }
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as TodoItem;
+            var item = args.SelectedItem as TodoItemModel;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new TodoItemDetailPage(new TodoItemDetailViewModel(item)));
+            await Navigation.PushAsync(new TodoItemEditPage(new TodoItemViewModel(item)));
 
             // Manually deselect item.
             TodoItemsListView.SelectedItem = null;
@@ -43,6 +37,7 @@ namespace XamarinApp.Views
         void RefreshItems_Clicked(object sender, EventArgs e)
         {
             viewModel.LoadItemsCommand.Execute(null);
+            TodoItemsListView.SelectedItem = null;
         }
 
         protected override void OnAppearing()

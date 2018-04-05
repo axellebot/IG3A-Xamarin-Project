@@ -10,8 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TodoItemsPage.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\WorkoutPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TodoListPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\StopWatchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -20,36 +20,27 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Models\TodoItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\TodoItemModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IFileHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\TodoDiskDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TodoLocalDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\TodoDataStoreFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\TodoCacheDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\WorkoutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ObservableViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StopWatchViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoBaseViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoItemEditViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoItemDetailViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoItemsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\TodoItemEditPage.xaml.cs">
       <DependentUpon>TodoItemEditPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\TodoItemDetailPage.xaml.cs">
-      <DependentUpon>TodoItemDetailPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\TodoListPage.xaml.cs">
+      <DependentUpon>TodoListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\TodoItemsPage.xaml.cs">
-      <DependentUpon>TodoItemsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\WorkoutPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\StopWatchPage.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>WorkoutPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SecondPage.xaml.cs">
-      <DependentUpon>SecondPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
+      <DependentUpon>StopWatchPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -58,18 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SecondPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TodoItemDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

@@ -5,8 +5,15 @@ using System.Runtime.CompilerServices;
 
 namespace XamarinApp.ViewModels
 {
-    public class ObservableViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
+        private bool isBusy = false;
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set { SetAndNotify(ref isBusy, value); }
+        }
+
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

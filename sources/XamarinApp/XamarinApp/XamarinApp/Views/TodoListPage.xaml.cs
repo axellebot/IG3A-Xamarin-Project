@@ -14,30 +14,9 @@ namespace XamarinApp.Views
         public TodoListPage()
 		{
 			InitializeComponent();
-
-            BindingContext = viewModel = new TodoListViewModel();
-        }
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-        {
-            var item = args.SelectedItem as TodoItemModel;
-            if (item == null)
-                return;
-
-            await Navigation.PushAsync(new TodoItemEditPage(new TodoItemViewModel(item)));
-
-            // Manually deselect item.
-            TodoItemsListView.SelectedItem = null;
-        }
-
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new TodoItemEditPage()));
-        }
-
-        void RefreshItems_Clicked(object sender, EventArgs e)
-        {
-            viewModel.LoadItemsCommand.Execute(null);
-            TodoItemsListView.SelectedItem = null;
+            viewModel = new TodoListViewModel();
+            viewModel.navigation = Navigation;
+            BindingContext = viewModel;
         }
 
         protected override void OnAppearing()

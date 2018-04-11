@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace XamarinApp.ViewModels
 {
-    class StopWatchViewModel : ObservableViewModel
+    class StopWatchViewModel : BaseViewModel
     {
         private Stopwatch stopWatch;
 

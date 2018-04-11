@@ -26,13 +26,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\TodoDataStoreFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\TodoCacheDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ObservableViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoItemCellViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StopWatchViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoBaseViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoListViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\TodoItemEditPage.xaml.cs">
-      <DependentUpon>TodoItemEditPage.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\TodoItemCell.xaml.cs">
+      <DependentUpon>TodoItemCell.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\TodoDetailPage.xaml.cs">
+      <DependentUpon>TodoDetailPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\TodoListPage.xaml.cs">
@@ -54,7 +58,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TodoItemEditPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TodoDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TodoItemCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

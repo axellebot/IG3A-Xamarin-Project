@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 
-using Foundation;
-using UIKit;
+using Xamarin.Forms;
+using XamarinApp.iOS;
+using XamarinApp.Services;
 
 [assembly: Dependency(typeof(FileHelper))]
 namespace XamarinApp.iOS

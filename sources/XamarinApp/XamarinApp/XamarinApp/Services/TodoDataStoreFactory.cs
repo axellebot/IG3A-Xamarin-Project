@@ -10,17 +10,17 @@ namespace XamarinApp.Services
     {
         string dbPath = "TodoSQLite.db3";
           
-        public IDataStore<TodoItem> Create()
+        public IDataStore<TodoItemModel> Create()
         {
             return CreateDiskDataStore();
         }
 
-        public IDataStore<TodoItem> CreateDiskDataStore()
+        public IDataStore<TodoItemModel> CreateDiskDataStore()
         {
             return new TodoDiskDataStore(DependencyService.Get<IFileHelper>().GetLocalFilePath(dbPath));
         }
 
-        public IDataStore<TodoItem> CreateCacheDataStore()
+        public IDataStore<TodoItemModel> CreateCacheDataStore()
         {
             return new TodoCacheDataStore();
         }

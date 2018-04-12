@@ -15,6 +15,7 @@ namespace XamarinApp.ViewModels
         public TodoItemModel TodoItem { get { return todoItem; } }
 
         public string Name { get { return todoItem.Name; } }
+        public string Notes { get { return todoItem.Notes; } }
 
         public bool Done {
             get { return todoItem.Done; }

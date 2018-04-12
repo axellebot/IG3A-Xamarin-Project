@@ -63,7 +63,6 @@ namespace XamarinApp.ViewModels
         public INavigation navigation;
         public TodoDetailViewModel(TodoItemModel todoItemModel = null)
         {
-            this.navigation = navigation;
             if (todoItemModel == null) {
                 this.todoItemModel = new TodoItemModel();
                 isNew = true;
@@ -85,6 +84,8 @@ namespace XamarinApp.ViewModels
         {
             if (IsBusy)
                 return;
+
+            IsBusy = true;
 
             if (isNew) {
                 MessagingCenter.Send(this, "CreateTodoItem", todoItemModel);

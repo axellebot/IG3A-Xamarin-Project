@@ -27,7 +27,7 @@ namespace XamarinApp.ViewModels
                 SetAndNotify(ref selectedItem, value);
                 if (selectedItem == null)
                     return;
-                SelectItemCommand.Execute(selectedItem); //called twice
+                SelectItemCommand.Execute(selectedItem);
                 SelectedItem = null;
             }
         }
@@ -56,38 +56,38 @@ namespace XamarinApp.ViewModels
             CreateItemCommand = new Command(async () => await CreateItemAsync());
             SelectItemCommand = new Command<TodoItemCellViewModel>(async (viewModel) => await SelecteItemAsync(viewModel));
 
-            MessagingCenter.Subscribe<TodoItemCellViewModel, TodoItemModel>(this, "CheckTodoItem", (obj, item) =>
+            MessagingCenter.Subscribe<TodoItemCellViewModel, TodoItemModel>(this, "CheckTodoItem", async (obj, item) =>
             {
                 var _item = item as TodoItemModel;
-                DataStore.UpdateItemAsync(_item);
+                await DataStore.UpdateItemAsync(_item);
             });
 
-            MessagingCenter.Subscribe<TodoDetailViewModel, TodoItemModel>(this, "UpdateTodoItem",  (obj, item) =>
+            MessagingCenter.Subscribe<TodoDetailViewModel, TodoItemModel>(this, "UpdateTodoItem", async (obj, item) =>
             {
                 var _item = item as TodoItemModel;
-                DataStore.UpdateItemAsync(_item);
-                LoadItemsCommand.Execute(null);
+                await DataStore.UpdateItemAsync(_item);
+                await LoadItemsAsync();
             });
 
-            MessagingCenter.Subscribe<TodoDetailViewModel, TodoItemModel>(this, "CreateTodoItem",  (obj, item) =>
+            MessagingCenter.Subscribe<TodoDetailViewModel, TodoItemModel>(this, "CreateTodoItem", async (obj, item) =>
             {
                 var _item = item as TodoItemModel;
-                Items.Add(new TodoItemCellViewModel(_item));
-                DataStore.AddItemAsync(_item);
+                await DataStore.AddItemAsync(_item);
+                await LoadItemsAsync();
             });
 
-            MessagingCenter.Subscribe<TodoDetailViewModel, TodoItemModel>(this, "DeleteTodoItem",  (obj, item) =>
+            MessagingCenter.Subscribe<TodoDetailViewModel, TodoItemModel>(this, "DeleteTodoItem", async (obj, item) =>
             {
                 var _item = item as TodoItemModel;
-                DataStore.DeleteItemAsync(_item);
-                LoadItemsCommand.Execute(null);
+                await DataStore.DeleteItemAsync(_item);
+                await LoadItemsAsync();
             });
 
-            MessagingCenter.Subscribe<TodoItemCellViewModel, TodoItemModel>(this, "DeleteTodoItem", (obj, item) =>
+            MessagingCenter.Subscribe<TodoItemCellViewModel, TodoItemModel>(this, "DeleteTodoItem", async (obj, item) =>
             {
                 var _item = item as TodoItemModel;
-                DataStore.DeleteItemAsync(_item);
-                LoadItemsCommand.Execute(null);
+                await DataStore.DeleteItemAsync(_item);
+                await LoadItemsAsync();
             });
         }
 
@@ -95,8 +95,11 @@ namespace XamarinApp.ViewModels
         {
             if (IsBusy)
                 return;
+
             IsBusy = true;
+
             await SelectedItem?.MoreItemAsync();
+
             IsBusy = false;
         }
   

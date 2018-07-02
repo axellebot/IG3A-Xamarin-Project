@@ -20,17 +20,35 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\FormItemModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\TodoItemModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\FormCacheDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\FormDataStoreFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\FormLocalDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IFileHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\TodoLocalDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\TodoDataStoreFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\TodoCacheDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FormDetailViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FormItemCellViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FormListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoItemCellViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StopWatchViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\FormDetailPage.xaml.cs">
+      <DependentUpon>FormDetailPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\FormItemCell.xaml.cs">
+      <DependentUpon>FormItemCell.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\FormListPage.xaml.cs">
+      <DependentUpon>FormListPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\TodoItemCell.xaml.cs">
       <DependentUpon>TodoItemCell.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -67,6 +85,20 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TodoItemCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\FormDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\FormItemCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\FormListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

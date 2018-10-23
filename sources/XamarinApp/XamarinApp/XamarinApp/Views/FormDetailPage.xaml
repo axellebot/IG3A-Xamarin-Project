@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="XamarinApp.Views.FormDetailPage"
+             xmlns:messier16="clr-namespace:Messier16.Forms.Controls;assembly=Messier16.Forms.Controls"
+		     Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Order="Primary" Command="{Binding DeleteItemCommand}" />
+        <ToolbarItem Text="Cancel" Order="Primary" Command="{Binding CancelItemCommand}"/>
+        <ToolbarItem Text="Save" Order="Primary" Command="{Binding SaveItemCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="15" Padding="15">
+                <Entry Placeholder="Drug's Name"  HorizontalOptions="FillAndExpand" Text="{Binding Name_Drug}" FontSize="Small" />
+                <Entry Placeholder="Part of the body"  HorizontalOptions="FillAndExpand" Text="{Binding Name_Body}" FontSize="Small" />
+                <Entry Placeholder="Doctor's Name"  HorizontalOptions="FillAndExpand" Text="{Binding Name_Doctor}" FontSize="Small" />
+                <Entry Placeholder="Dosage"  HorizontalOptions="FillAndExpand" Text="{Binding Dosage}" FontSize="Small" />
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Start Date" FontSize="Small"  Grid.Row="0" Grid.Column="0"/>
+                    <DatePicker x:Name="StartDate"  MinimumDate="1/1/2018"
+                    MaximumDate="12/31/2030" 
+                    Date="{Binding Date_Deb}"    Grid.Row="0" Grid.Column="1"         />
+                    <Label Text="End Date" FontSize="Small"  Grid.Row="1" Grid.Column="0"/>
+                    <DatePicker x:Name="EndDate" MinimumDate="{Binding Source={x:Reference StartDate},Path=Date}"
+                    MaximumDate="12/31/2030" 
+                    Date="{Binding Date_Fin}" Grid.Row="1" Grid.Column="1" />
+                    <Label Text="Dose's method" FontSize="Small"  Grid.Row="2" Grid.Column="0"/>
+                    <Picker x:Name="picker" Title="Choose one" SelectedIndex="{Binding Dose}"  Grid.Row="2" Grid.Column="1">
+                        <Picker.ItemsSource >
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Oral</x:String>
+                                <x:String>Cutaneous</x:String>
+                                <x:String>Intravenous</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="Pick time" FontSize="Small"  Grid.Row="3" Grid.Column="0"/>
+                    <TimePicker x:Name="Time_1" Time="{Binding Time_1}" Grid.Row="4" Grid.Column="0" />
+                    <Switch x:Name="TimeC_1" IsToggled="{Binding TimeCheck_1}" Grid.Row="4" Grid.Column="1" />
+                    <TimePicker x:Name="Time_2" Time="{Binding Time_2}" Grid.Row="5" Grid.Column="0"/>
+                    <Switch x:Name="TimeC_2" IsToggled="{Binding TimeCheck_2}" Grid.Row="5" Grid.Column="1" />
+                    <TimePicker x:Name="Time_3" Time="{Binding Time_3}" Grid.Row="6" Grid.Column="0"/>
+                    <Switch x:Name="TimeC_3" IsToggled="{Binding TimeCheck_3}" Grid.Row="6" Grid.Column="1" />
+                    <Label Text="Notifications" FontSize="Small" Grid.Row="7" Grid.Column="0"/>
+                    <Switch x:Name="Notif" IsToggled="{Binding Notif}" Grid.Row="7" Grid.Column="1" />
+                </Grid>
+           </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

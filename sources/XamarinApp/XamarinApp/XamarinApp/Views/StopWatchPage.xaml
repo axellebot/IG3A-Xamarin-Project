@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:XamarinApp.Views"
+             xmlns:local="clr-namespace:XamarinApp"
+             x:Class="XamarinApp.Views.StopWatchPage"
+             Title="Stop Watch">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+                <Label Text="Watch" FontSize="Large" />
+                <Label x:Name="valueLabel" Text="" Font="Large" />
+                <Label Text="Timer" FontSize="Large" />
+                <Label x:Name="Timer" Text="0:0:0" Font="Large"/>
+                <Button Text="Start" Clicked="Start_Clicked" />
+                <Button Text="Stop" Clicked="Stop_Clicked" />
+                <Label Text="Counter" FontSize="Large" />
+                <Label x:Name="Counter" Text="0" Font="Large" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button Text="+" FontSize="Large" Clicked="Compt_Add_Clicked"  Grid.Row="0" Grid.Column="0" />
+                    <Button Text="-" FontSize="Large" Clicked="Compt_Remove_Clicked"  Grid.Row="0" Grid.Column="1"/>
+                    <Button Text="Reset" Clicked="Compt_Reset_Clicked"  Grid.Row="0" Grid.Column="2" />
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -9,7 +9,12 @@
                 <views:TodoListPage />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Stop Watch">
+        <NavigationPage Title="Drugs">
+            <x:Arguments>
+                <views:FormListPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Watch">
             <x:Arguments>
                 <views:StopWatchPage />
             </x:Arguments>

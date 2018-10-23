@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="XamarinApp.Views.FormItemCell"
+          xmlns:messier16="clr-namespace:Messier16.Forms.Controls;assembly=Messier16.Forms.Controls">
+    <ViewCell.ContextActions>
+        <MenuItem Command="{Binding DeleteItemCommand}" Text="Delete" IsDestructive="True" />
+    </ViewCell.ContextActions>
+    <StackLayout Orientation="Horizontal" Padding="10">
+        <Switch IsToggled="{Binding Notif}" />
+        <StackLayout Orientation="Vertical">
+            <Label Text="{Binding Name_Drug}" 
+                                   LineBreakMode="NoWrap" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="16" />
+            <Label Text="{Binding Name_Body}" 
+                                   LineBreakMode="TailTruncation"
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="16" />
+            <Label Text="{Binding Dosage}" 
+                                   LineBreakMode="TailTruncation"
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="16" />
+        </StackLayout>
+    </StackLayout>
+</ViewCell>
